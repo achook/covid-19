@@ -18,11 +18,18 @@ export default {
 
 <style lang="scss">
 
+html {
+    background-color: #fdfdfd;
+    color: #020202;
+}
+
 html, body {
+    box-sizing: border-box;
     height: 100%;
+
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
 }
 
 .virus-image {
@@ -32,8 +39,8 @@ html, body {
 }
 
 #app {
-    height: 100%;
     box-sizing: border-box;
+    height: 100%;
 
     padding: 60px;
 

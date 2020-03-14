@@ -68,12 +68,18 @@ export default {
     },
 
     created () {
-        // this.updateCountry('China')
         this.getCounties()
     }
 }
 </script>
 
 <style scoped lang="scss">
+.title {
+    font-size: 1.7em;
+}
 
+.value {
+    font-size: 1.1em;
+    font-weight: bold;
+}
 </style>

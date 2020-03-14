@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown" :class="{'open' : open}">
+    <div class="dropdown">
         <input type="text"
             v-model="searchText"
             class="input"
@@ -16,7 +16,7 @@
             @keydown.up="up"
 
             @keydown.enter="suggestionSelected(matches[highlightIndex])">
-        <ul class="suggestion-list" >
+        <ul class="suggestion-list" :class="{'open' : open}">
             <li class="suggestion"
                 v-for="(suggestion, index) in matches"
                 v-bind:key="index"
@@ -31,64 +31,65 @@
 </template>
 
 <style lang="scss" scoped>
-.active  {
-  color: #fff;
-  background-color: #A3057F;
-}
-
 .dropdown {
     display: inline-block;
     position: relative;
 }
 
+.input {
+    border: 2px solid #A3057F;
+    padding: 10px;
+
+    text-align: inherit;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #A3057F;
+}
+
 .suggestion-list {
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid #ddd;
-    list-style: none;
     display: block;
-    margin: 0;
-    padding: 0;
+
     width: 100%;
-    overflow: hidden;
-    position: absolute;
     top: 100%;
     left: 0;
     z-index: 2;
-}
 
-.suggestion-list li {
-  cursor: pointer;
-  padding: 10px;
-}
+    background-color: rgba(255, 255, 255, 0.95);
 
-.suggestion-list li:hover {
-  color: #fff;
-  background-color: #ccc;
-}
+    border: 1px solid #ddd;
+    margin: 0;
+    padding: 0;
 
-.dropdown.open {
-    .suggestion-list {
+    overflow: hidden;
+    position: absolute;
+
+    list-style: none;
+
+    display: none;
+
+    &.open {
         display: block;
     }
 }
 
-.dropdown {
-    .suggestion-list {
-        display: none;
+.suggestion {
+    cursor: pointer;
+    padding: 8px;
+
+    font-size: 1em;
+
+    &.active  {
+        background-color: #A3057F;
+        color: #fff;
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: #ccc;
     }
 }
 
-.input {
-    text-align: inherit;
-    font-size: inherit;
-    font-weight: bold;
-
-    color: #A3057F;
-    border: 1px solid #A3057F;
-
-    padding: 10px;
-}
 </style>
 
 <script>
