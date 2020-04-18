@@ -32,9 +32,10 @@ export default {
         async getCounties () {
             const data = await fetch('https://covid19.mathdro.id/api/countries')
             const json = await data.json()
+
             const countries = []
-            for (const country in json.countries) {
-                countries.push(country)
+            for (const country of json.countries) {
+                countries.push(country.name)
             }
 
             this.options = countries
